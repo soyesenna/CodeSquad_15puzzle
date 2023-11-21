@@ -31,6 +31,47 @@ public class PuzzleV2 implements Puzzle{
 
     }
 
+    private boolean canMove(int num) {
+        int[][] direction = {
+                {-1, 0},
+                {0, 1},
+                {1, 0},
+                {0, -1}
+        };
+        int[] now = findNumIndex(num);
+        boolean result = false;
+        for (int[] dir : direction) {
+            int nowR = now[0] + dir[0];
+            int nowC = now[1] + dir[1];
+            if (inRange(nowR, nowC) && puzzle.get(nowR).get(nowC) == 0) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+
+    private boolean inRange(int r, int c) {
+        return r >= 0 && r < 4 && c >= 0 && c < 4;
+    }
+
+    private int[] findNumIndex(int num) {
+        int[] result = new int[2];
+        boolean isFind = false;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (this.puzzle.get(i).get(j) == num){
+                    result[0] = i;
+                    result[1] = j;
+                    isFind = true;
+                    break;
+                }
+            }
+            if (isFind) break;
+        }
+        return result;
+    }
+
     @Override
     public boolean checkIsSorted() {
         return false;
