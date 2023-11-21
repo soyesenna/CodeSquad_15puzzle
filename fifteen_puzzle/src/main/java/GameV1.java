@@ -1,15 +1,15 @@
 import java.io.*;
 import java.util.*;
 
-public class GameV1 {
+public class GameV1 implements Game{
 
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private final PuzzleV1 puzzleV1 = new PuzzleV1();
 
     public GameV1() {
     }
-
-    public void doGame() throws IOException, NumberFormatException{
+    @Override
+    public void doGame() throws IOException{
         int turn = 1;
         while (!puzzleV1.checkIsSorted()) {
             printTurnAndPuzzle(turn);
@@ -20,8 +20,8 @@ public class GameV1 {
         printTurnAndPuzzle(turn);
         System.out.println("축하합니다! " + turn + "턴만에 퍼즐을 완성하셨습니다!");
     }
-
-    private void printTurnAndPuzzle(int turn) {
+    @Override
+    public void printTurnAndPuzzle(int turn) {
         StringBuilder sb = new StringBuilder();
         sb.append("\nTurn ");
         sb.append(turn);
@@ -29,8 +29,8 @@ public class GameV1 {
         addPuzzleNums(sb);
         System.out.println(sb.toString());
     }
-
-    private void addPuzzleNums(StringBuilder sb) {
+    @Override
+    public void addPuzzleNums(StringBuilder sb) {
         sb.append("[");
         for (Integer num : puzzleV1.getPuzzle()) {
             sb.append(num);
@@ -39,8 +39,8 @@ public class GameV1 {
         sb.delete(sb.length() - 2, sb.length() - 1);
         sb.append("]");
     }
-
-    private List<Integer> userInput() throws IOException, NumberFormatException {
+    @Override
+    public List<Integer> userInput() throws IOException, NumberFormatException {
         boolean correctInput = false;
         List<Integer> result = new ArrayList<>();
         while (!correctInput) {
