@@ -10,7 +10,19 @@ public class GameV2 implements Game{
 
     @Override
     public void doGame() throws IOException {
-
+        int turn = 1;
+        while (puzzle.checkIsSorted()) {
+            printTurnAndPuzzle(turn);
+            int now = userInput().get(0);
+            try {
+                puzzle.change(now, 0);
+                turn++;
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(illegalArgumentException.getMessage());
+            }
+        }
+        printTurnAndPuzzle(turn);
+        System.out.println("축하합니다! " + turn + "턴만에 퍼즐을 완성하셨습니다!");
     }
 
     @Override
