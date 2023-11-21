@@ -89,3 +89,50 @@
   - throws : IOException, NumberFormatException
   - 프로그램의 시작점인 main메서드
   - Game객체를 만들어 게임을 시작한다
+
+
+--- 
+## 2. V2 전략
+- 우선 V1의 코드를 재활용하기 위해 인터페이스를 활용할 예정
+
+## 사용할 Interface
+## Puzzle
+- change(int, int)
+  - parameter : int, int
+  - return : void
+  - 주어진 두 숫자의 자리를 바꿈
+  - 입력으로 -1이 주어지면 숫자가 아닌 빈칸으로 인식
+- checkIsSorted()
+  - parameter : none
+  - return : boolean
+  - member variable로 가지고 있는 정답 배열과 현재 배열을 비교하여 모두 같으면 true, 아니면 false
+- checkIsSorted()
+  - parameter : none
+  - return : boolean
+  - member variable로 가지고 있는 정답 배열과 현재 배열을 비교하여 모두 같으면 true, 아니면 false
+- getPuzzle()
+  - parameter : none
+  - return List\<Integer>
+  - 현재 퍼즐을 복사해서 반환해주는 메서드
+
+## Game
+- doGame()
+  - parameter : none
+  - return : void
+  - throws : IOException, NumberFormatException
+  - 게임의 진행을 총괄하는 메서드
+- userInput()
+  - parameter : none
+  - return : List\<Integer>
+  - throws : IOException, NumberFormatException
+  - 유저의 입력을 받는 메서드
+  - 잘못된 입력 검사도 여기서함
+    - parse메서드 활용
+- printTurnAndPuzzle(turn)
+  - parameter : int
+  - return : void
+  - 현재 turn과 puzzle배열을 출력해주는 메서드
+- addPuzzleNums(sb)
+  - parameter : StringBuilder
+  - return : void
+  - parameter로 받은 StringBuilder에 현재 퍼즐의 숫자를 형식에 맞추어 추가해주는 메서드
