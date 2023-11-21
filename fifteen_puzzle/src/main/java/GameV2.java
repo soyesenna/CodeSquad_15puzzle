@@ -44,11 +44,30 @@ public class GameV2 implements Game{
 
     @Override
     public void printTurnAndPuzzle(int turn) {
-
+        StringBuilder sb = new StringBuilder();
+        sb.append("Turn ");
+        sb.append(turn);
+        sb.append("\n");
+        addPuzzleNums(sb);
+        System.out.println(sb.toString());
     }
 
     @Override
     public void addPuzzleNums(StringBuilder sb) {
-
+        List<List<Integer>> copiedPuzzle = null;
+        if (puzzle instanceof PuzzleV2) copiedPuzzle = ((PuzzleV2) puzzle).getPuzzle();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                sb.append("[");
+                int now = copiedPuzzle.get(i).get(j);
+                if (now == 0) sb.append("  ");
+                else if (now < 10) {
+                    sb.append(" ");
+                    sb.append(now);
+                } else sb.append(now);
+                sb.append("]");
+            }
+            sb.append("\n");
+        }
     }
 }
