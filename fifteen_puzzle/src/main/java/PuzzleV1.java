@@ -33,7 +33,7 @@ public class PuzzleV1 implements Puzzle{
 
         return isSorted;
     }
-    @Override
+
     public List<Integer> getPuzzle() {
         return new ArrayList<>(puzzle);
     }

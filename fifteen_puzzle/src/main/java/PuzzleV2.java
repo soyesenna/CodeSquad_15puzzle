@@ -89,15 +89,8 @@ public class PuzzleV2 implements Puzzle{
         return result;
     }
 
-    @Override
-    public List<Integer> getPuzzle() {
-        List<Integer> toReturn = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                toReturn.add(puzzle.get(i).get(j));
-            }
-        }
-        return toReturn;
+    public List<List<Integer>> getPuzzle() {
+        return new ArrayList<>(puzzle);
     }
 
 }
