@@ -25,30 +25,40 @@ public class PuzzleV2 implements Puzzle{
     }
 
     @Override
-    public void change(int num1, int num2) {
-        if (!(num1 == 0 || num2 == 0)) return;
+    public void change(int num1, int num2) throws IllegalArgumentException{
+        if (!(num1 == 0 || num2 == 0)) throw new IllegalArgumentException("parameter 두 개 중 하나는 반드시 0이어야 합니다");
 
+        int moveNum = num1 == 0 ? num2 : num1;
+        int[] now = findNumIndex(moveNum);
+        int[] next = canMove(moveNum, now);
 
+        if (next == null) throw new IllegalArgumentException("움직일 수 있는 칸이 존재하지 않습니다");
+
+        puzzle.get(next[0]).set(next[1], moveNum);
+        puzzle.get(now[0]).set(now[1], 0);
     }
 
-    private boolean canMove(int num) {
+    private int[] canMove(int num, int[] now) {
         int[][] direction = {
                 {-1, 0},
                 {0, 1},
                 {1, 0},
                 {0, -1}
         };
-        int[] now = findNumIndex(num);
-        boolean result = false;
+        int[] result = new int[2];
+        boolean isFind = false;
         for (int[] dir : direction) {
             int nowR = now[0] + dir[0];
             int nowC = now[1] + dir[1];
             if (inRange(nowR, nowC) && puzzle.get(nowR).get(nowC) == 0) {
-                result = true;
+                result[0] = nowR;
+                result[1] = nowC;
+                isFind = true;
                 break;
             }
         }
-        return result;
+        if (isFind){ return result;}
+        else return null;
     }
 
     private boolean inRange(int r, int c) {
