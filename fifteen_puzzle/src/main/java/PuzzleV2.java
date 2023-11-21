@@ -74,11 +74,24 @@ public class PuzzleV2 implements Puzzle{
 
     @Override
     public boolean checkIsSorted() {
-        return false;
+        boolean result = true;
+        boolean check = false;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (puzzle.get(i).get(j) != answer.get(i).get(j)) {
+                    result = false;
+                    check = true;
+                    break;
+                }
+            }
+            if (check) break;
+        }
+        return result;
     }
 
     @Override
     public List<Integer> getPuzzle() {
         return null;
     }
+
 }
