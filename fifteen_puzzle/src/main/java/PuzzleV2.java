@@ -9,14 +9,15 @@ public class PuzzleV2 implements Puzzle{
 
     public PuzzleV2() {
         answer = new ArrayList<>();
+        puzzle = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            List<Integer> toAnswer = new ArrayList<>();
-            for (int j = 1; j < 5; j++) {
-                toAnswer.add(j + (4 * i));
+            List<Integer> toInput = new ArrayList<>();
+            for (int j = 0; j < 4; j++) {
+                toInput.add(j + (4 * i));
             }
-            answer.add(toAnswer);
+            answer.add(toInput);
+            puzzle.add(new ArrayList<>(toInput));
         }
-        puzzle = new ArrayList<>(answer);
 
         for (int i = 0; i < 4; i++) {
             Collections.shuffle(puzzle.get(i));
@@ -32,7 +33,7 @@ public class PuzzleV2 implements Puzzle{
         int[] now = findNumIndex(moveNum);
         int[] next = canMove(moveNum, now);
 
-        if (next == null) throw new IllegalArgumentException("움직일 수 있는 칸이 존재하지 않습니다");
+        if (next == null) throw new IllegalArgumentException("움직일 수 있는 칸이 존재하지 않습니다\n");
 
         puzzle.get(next[0]).set(next[1], moveNum);
         puzzle.get(now[0]).set(now[1], 0);

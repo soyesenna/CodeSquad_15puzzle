@@ -11,7 +11,7 @@ public class GameV2 implements Game{
     @Override
     public void doGame() throws IOException {
         int turn = 1;
-        while (puzzle.checkIsSorted()) {
+        while (!puzzle.checkIsSorted()) {
             printTurnAndPuzzle(turn);
             int now = userInput().get(0);
             try {
