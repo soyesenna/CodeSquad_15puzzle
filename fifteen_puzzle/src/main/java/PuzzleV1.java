@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Puzzle {
+public class PuzzleV1 {
 
     private List<Integer> puzzle;
     private final List<Integer> answer;
 
-    public Puzzle() {
+    public PuzzleV1() {
         answer = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8));
         puzzle = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8));
         Collections.shuffle(puzzle);

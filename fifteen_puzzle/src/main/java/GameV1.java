@@ -1,21 +1,20 @@
-import javax.swing.*;
 import java.io.*;
 import java.util.*;
 
-public class Game {
+public class GameV1 {
 
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private final Puzzle puzzle = new Puzzle();
+    private final PuzzleV1 puzzleV1 = new PuzzleV1();
 
-    public Game() {
+    public GameV1() {
     }
 
     public void doGame() throws IOException, NumberFormatException{
         int turn = 1;
-        while (!puzzle.checkIsSorted()) {
+        while (!puzzleV1.checkIsSorted()) {
             printTurnAndPuzzle(turn);
             List<Integer> input = userInput();
-            puzzle.change(input.get(0), input.get(1));
+            puzzleV1.change(input.get(0), input.get(1));
             turn++;
         }
         printTurnAndPuzzle(turn);
@@ -33,7 +32,7 @@ public class Game {
 
     private void addPuzzleNums(StringBuilder sb) {
         sb.append("[");
-        for (Integer num : puzzle.getPuzzle()) {
+        for (Integer num : puzzleV1.getPuzzle()) {
             sb.append(num);
             sb.append(", ");
         }
