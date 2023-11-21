@@ -33,4 +33,8 @@ public class Puzzle {
 
         return isSorted;
     }
+
+    public List<Integer> getPuzzle() {
+        return new ArrayList<>(puzzle);
+    }
 }

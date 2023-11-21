@@ -12,6 +12,10 @@ public class Game {
     }
 
     private void printTurnAndPuzzle(int turn) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Turn ");
+        sb.append(turn);
+        sb.append("\n");
 
     }
 
