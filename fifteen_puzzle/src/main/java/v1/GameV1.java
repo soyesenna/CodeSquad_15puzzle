@@ -1,7 +1,10 @@
+package v1;
+
 import java.io.*;
 import java.util.*;
+import interfaces.Game;
 
-public class GameV1 implements Game{
+public class GameV1 implements Game {
 
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private final PuzzleV1 puzzleV1 = new PuzzleV1();

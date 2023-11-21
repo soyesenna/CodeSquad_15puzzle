@@ -1,9 +1,13 @@
+package v2;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
+import interfaces.Game;
+import interfaces.Puzzle;
 
-public class GameV2 implements Game{
+public class GameV2 implements Game {
 
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private final Puzzle puzzle = new PuzzleV2();

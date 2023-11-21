@@ -1,8 +1,11 @@
+package v1;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import interfaces.*;
 
-public class PuzzleV1 implements Puzzle{
+public class PuzzleV1 implements Puzzle {
 
     private List<Integer> puzzle;
     private final List<Integer> answer;
