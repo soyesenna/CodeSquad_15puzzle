@@ -6,4 +6,5 @@ public interface Puzzle {
     boolean checkIsSorted();
 
     List<Integer> getPuzzle();
+
 }

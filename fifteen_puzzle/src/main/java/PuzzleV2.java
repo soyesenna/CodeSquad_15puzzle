@@ -78,7 +78,7 @@ public class PuzzleV2 implements Puzzle{
         boolean check = false;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (puzzle.get(i).get(j) != answer.get(i).get(j)) {
+                if (!puzzle.get(i).get(j).equals(answer.get(i).get(j))) {
                     result = false;
                     check = true;
                     break;
@@ -91,7 +91,13 @@ public class PuzzleV2 implements Puzzle{
 
     @Override
     public List<Integer> getPuzzle() {
-        return null;
+        List<Integer> toReturn = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                toReturn.add(puzzle.get(i).get(j));
+            }
+        }
+        return toReturn;
     }
 
 }
